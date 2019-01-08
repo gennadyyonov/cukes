@@ -12,12 +12,14 @@ import lv.ctco.cukes.http.facade.HttpRequestFacade;
 public class GQLRequestFacade {
 
     private GraphQLRequest graphQLRequest = new GraphQLRequest();
+    private boolean active;
 
     @Inject
     private HttpRequestFacade requestFacade;
 
     public void initNewSpecification() {
         graphQLRequest = new GraphQLRequest();
+        setActive(false);
     }
 
     private RequestSpecification specification() {
@@ -34,5 +36,17 @@ public class GQLRequestFacade {
 
     public GraphQLRequest getGraphQLRequest() {
         return graphQLRequest;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isGivenBaseUri() {
+        return requestFacade.isGivenBaseUri();
     }
 }

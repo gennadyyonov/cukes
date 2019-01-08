@@ -14,6 +14,7 @@ public class GivenSteps {
 
     @Given("^baseUri is \"(.+)\"$")
     public void base_Uri_Is(String url) {
+        facade.setGivenBaseUri(true);
         this.facade.baseUri(url);
     }
 

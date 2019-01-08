@@ -14,9 +14,11 @@ public class RestRequestFacade {
     HttpRequestFacade requestFacade;
 
     private String requestBody;
+    private boolean active;
 
     public void initNewSpecification() {
         this.requestBody = null;
+        setActive(false);
     }
 
     private RequestSpecification specification() {
@@ -61,5 +63,17 @@ public class RestRequestFacade {
 
     public void clearRequestBody() {
         this.requestBody = null;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isGivenBaseUri() {
+        return requestFacade.isGivenBaseUri();
     }
 }

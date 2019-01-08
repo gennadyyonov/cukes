@@ -34,6 +34,7 @@ public class HttpRequestFacade {
 
 	protected RequestSpecification specification;
 	private AwaitCondition awaitCondition;
+	private boolean givenBaseUri;
 
 	@Inject
 	public HttpRequestFacade(GlobalWorldFacade world, RestAssuredConfiguration restConfig) {
@@ -72,6 +73,7 @@ public class HttpRequestFacade {
 		try {
 			specification = RestAssured.given().config(restConfig.getConfig());
 			awaitCondition = null;
+			givenBaseUri = false;
 			onCreate();
 		} catch (Exception e) {
 			throw new CukesRuntimeException(e);
@@ -186,4 +188,11 @@ public class HttpRequestFacade {
 		return awaitCondition;
 	}
 
+	public boolean isGivenBaseUri() {
+		return givenBaseUri;
+	}
+
+	public void setGivenBaseUri(boolean givenBaseUri) {
+		this.givenBaseUri = givenBaseUri;
+	}
 }
